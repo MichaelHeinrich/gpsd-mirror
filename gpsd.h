@@ -132,12 +132,10 @@ enum isgpsstat_t {
  * The packet buffers need to be as long than the longest packet we
  * expect to see in any protocol, because we have to be able to hold
  * an entire packet for checksumming...
- * First we thought it had to be big enough for a SiRF Measured Tracker
- * Data packet (188 bytes). Then it had to be big enough for a UBX SVINFO
- * packet (206 bytes). Now it turns out that a couple of ITALK messages are
- * over 512 bytes. I know we like verbose output, but this is ridiculous.
+ * UBX-RXM-RAWX packages on multi frequency receivers are substantially
+ * larger than other packages.
  */
-#define MAX_PACKET_LENGTH	516	/* 7 + 506 + 3 */
+#define MAX_PACKET_LENGTH	4096	/* 7 + 506 + 3 */
 
 /*
  * UTC of second 0 of week 0 of the first rollover period of GPS time.
